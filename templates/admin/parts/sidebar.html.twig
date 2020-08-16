@@ -1,0 +1,41 @@
+<aside class="menu-sidebar2">
+    <div class="logo">
+        <a href="#">
+            <img src="{{ asset('assets/admin/images/icon/logo-white.png') }}" alt="Cool Admin" />
+        </a>
+    </div>
+    <div class="menu-sidebar2__content js-scrollbar1">
+        <div class="account2">
+            <div class="image img-cir img-120">
+                <img src="{{ asset(app.user.avatar) }}" alt="{{ app.user.firstname ~ ' ' ~ app.user.lastname }}" />
+            </div>
+            <h4 class="name">{{ app.user.firstname }}</h4>
+        </div>
+        <nav class="navbar-sidebar2">
+            <ul class="list-unstyled navbar__list">
+                <li class="active">
+                    <a class="js-arrow" href="#">
+                        <i class="fas fa-tachometer-alt"></i>Dashboard
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fas fa-shopping-basket"></i>Products</a>
+                </li>
+                <li>
+                    <a href="inbox.html">
+                        <i class="fas fa-box"></i>Orders</a>
+                    <span class="inbox-num">3</span>
+                </li>
+                <li>
+                    <a href="inbox.html">
+                        <i class="fas fa-chart-bar"></i>Statistics</a>
+                </li>
+                <li>
+                    <a href="{{ path('app_logout') }}">
+                        <i class="fas fa-sign-out-alt"></i>Log Out</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</aside>

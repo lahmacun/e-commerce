@@ -59,14 +59,19 @@ class User implements UserInterface
     private $roles = [];
 
     /**
-     * @ORM\ManyToOne(targetEntity=Shop::class)
+     * @ORM\ManyToOne(targetEntity=Store::class)
      */
-    private $shop;
+    private $store;
 
     /**
      * @ORM\Column(type="datetime")
      */
     private $createdAt;
+
+	/**
+	 * @ORM\Column(type="string", length=255, nullable=true)
+	 */
+    private $avatar;
 
     public function getId(): ?int
     {
@@ -169,14 +174,14 @@ class User implements UserInterface
         return $this;
     }
 
-    public function getShop(): ?Shop
+    public function getStore(): ?Store
     {
-        return $this->shop;
+        return $this->store;
     }
 
-    public function setShop(?Shop $shop): self
+    public function setStore(?Store $store): self
     {
-        $this->shop = $shop;
+        $this->store = $store;
 
         return $this;
     }
@@ -193,15 +198,33 @@ class User implements UserInterface
         return $this;
     }
 
+	/**
+	 * @return mixed
+	 */
+	public function getAvatar(): string {
+		return $this->avatar ?? "https://www.gravatar.com/avatar/" . md5($this->getEmail()) . "?s=400";
+	}
+
+	/**
+	 * @param mixed $avatar
+	 *
+	 * @return User
+	 */
+	public function setAvatar($avatar): self {
+		$this->avatar = $avatar;
+
+		return $this;
+	}
+
 	public function getSalt() {
 		return null;
 	}
 
-	public function getUsername() {
+	public function getUsername(): string {
 		return $this->getEmail();
 	}
 
 	public function eraseCredentials() {
-
+    	// void
 	}
 }
